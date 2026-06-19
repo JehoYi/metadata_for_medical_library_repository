@@ -4,6 +4,8 @@
 
 스키마 파일은 MMLR_Schema.xsd입니다.
 Schema.md는 각 요소의 의미와 입력 방식을 마크다운 방식으로 정리한 문서입니다.
-Appendix.md는 object_category, article_type, author_type, publication_stage, rights_status, record_status 등 반복적으로 사용되는 속성값과 통제어휘를 별도로 정리한 부록입니다.
+Appendix.md는 object_category, article_type, author_type, publication_stage, rights_status, record_status 등의 요소에서 사용하는 미리 정의된 attribute와 value를 별도로 정리한 문서입니다.
 
-이 스키마는 특정 기관의 리포지터리 구축, 연구성과물 관리, XML 기반 데이터 검증, 검색 및 재활용 가능한 메타데이터 작성에 활용할 수 있습니다. 또한 기관별 정책에 따라 객체 유형, 권리 상태, 출판 상태, 리포지터리 처리 상태 등을 확장하거나 조정할 수 있도록 비교적 유연한 구조를 지향합니다.
+이 스키마를 통해 기관, 특히 의학도서관 및 의학관련기관의 리포지터리 구축, 연구성과물 관리, XML 기반 데이터 검증, 검색 및 재활용 가능한 메타데이터 작성을 용이하게 할 수 있습니다. 또한 기관별 정책에 따라 객체 유형, 라이선스/저작권 상태, 출판 상태, 리포지터리 처리 상태 등을 확장하거나 조정할 수 있도록 비교적 유연한 구조를 지향합니다.
+
+구조에 대한 문의사항은 Comment를 남겨 주시면 확인하여 반영하도록 하겠습니다. 
