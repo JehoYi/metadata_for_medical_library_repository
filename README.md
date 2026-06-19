@@ -17,7 +17,9 @@ https://github.com/JehoYi/metadata_for_medical_library_repository/blob/main/MMLR
 
 5. Sample XML records
 https://github.com/JehoYi/metadata_for_medical_library_repository/blob/main/mmlr_example_1_retracted_article.xml
+
 https://github.com/JehoYi/metadata_for_medical_library_repository/blob/main/mmlr_example_2_updated_article.xml
+
 https://github.com/JehoYi/metadata_for_medical_library_repository/blob/main/mmlr_example_3_conference_paper.xml
 
 
