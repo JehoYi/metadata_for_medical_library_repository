@@ -1,0 +1,91 @@
+<metadata_for_medical_library_repository
+    xmlns="https://mmlr.org/metadataformedicallibraryrepository/schema/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://mmlr.org/metadataformedicallibraryrepository/schema/1.0 MMLR_Schema.xsd">
+    <object_type object_category="article" article_type="conference_paper"/>
+    <object_type object_category="article" article_type="original_article"/>
+    <!--컨퍼런스에서 발표된 바 있는 논문으로 Conference Paper도 함께 기재합니다-->
+    <object_title>
+        <original_title>Signature of α-Synuclein Pathology in Asymptomatic Stages and a Memory Clinic Population</original_title> 
+    </object_title>
+    <published_date>
+        <accepted_date>2024-06-15</accepted_date>
+        <first_published_date>2024-07-28</first_published_date>
+    </published_date>
+    <author_information>
+        <author_type>1st_author</author_type>
+        <author_type>corresponding_author</author_type>
+        <!--첫번째 저자이면서 교신저자인 경우입니다-->
+        <author_name>
+            <full_name>Laura E. M. Wisse</full_name>
+        </author_name>
+        <author_address>Department of Clinical Science Lund, Lund University, Lund, Sweden</author_address>
+        <author_email>laura.wisse@med.lu.se</author_email>
+        <author_position>1</author_position>
+    </author_information>
+    <author_information>
+        <author_type>corresponding_author</author_type>
+        <author_name>
+            <full_name>Oskar Hansson</full_name>
+        </author_name>
+        <author_address>Memory Clinic, Skåne University Hospital, SE-205 02, Malmö, Sweden</author_address>
+        <author_email>oskar.hansson@med.lu.se</author_email>
+        <author_position>15</author_position>
+    </author_information>    
+    <object_external_identifier type="doi">10.1001/jamaneurol.2024.2713</object_external_identifier>
+    <object_external_identifier type="PMID">39068668</object_external_identifier>
+    <object_external_identifier type="PMCID">PMC11284633</object_external_identifier>
+    <object_source>
+        <journal>
+            <journal_identifier>2168-6149</journal_identifier>
+            <journal_identifier>2168-6157</journal_identifier>
+            <journal_title>JAMA Neurology</journal_title>
+        </journal>
+        <conference>
+            <conference_title>Alzheimer’s Association International Conference</conference_title>
+            <conference_date>
+                <start_date>2024-07-28</start_date>
+                <end_date>2024-07-28</end_date>
+            </conference_date>
+        </conference>
+    </object_source>
+    <citation_information>
+        <citation_source source="altmetric" identifier_type="url" identifier="https://jamanetwork.altmetric.com/details/165747051" />
+    </citation_information>
+    <object_status>
+        <publication_stage>issue_published</publication_stage>
+        <repository_status>published</repository_status>
+    </object_status>
+    <text_information>
+        <abstract><![CDATA[Importance  The lack of an in vivo measure for α-synuclein (α-syn) pathology until recently has limited thorough characterization of its brain atrophy pattern, especially during early disease stages.
+            Objective  To assess the association of state-of-the-art cerebrospinal fluid (CSF) seed amplification assays (SAA) α-syn positivity (SAA α-syn+) with magnetic resonance imaging (MRI) structural measures, across the continuum from clinically unimpaired (CU) to cognitively impaired (CI) individuals, in 3 independent cohorts, and separately in CU and CI individuals, the latter reflecting a memory clinic population.
+            Design, Setting, and Participants  Cross-sectional data were used from the Swedish BioFINDER-2 study (inclusion, 2017-2023) as the discovery cohort and the Swedish BioFINDER-1 study (inclusion, 2007-2015) and Alzheimer’s Disease Neuroimaging Initiative (ADNI; inclusion 2005-2022) as replication cohorts. All cohorts are from multicenter studies, but the BioFINDER cohorts used 1 MRI scanner. CU and CI individuals fulfilling inclusion criteria and without missing data points in relevant metrics were included in the study. All analyses were performed from 2023 to 2024.
+            Exposures  Presence of α-syn pathology, estimated by baseline CSF SAA α-syn.
+            Main Outcomes and Measures  The primary outcomes were cross-sectional structural MRI measures either through voxel-based morphometry (VBM) or regions of interest (ROI) including an automated pipeline for cholinergic basal forebrain nuclei CH4/4p (nucleus basalis of Meynert [NBM]) and CH1/2/3. Secondary outcomes were domain-specific cross-sectional cognitive measures. Analyses were adjusted for CSF biomarkers of Alzheimer pathology.
+            Results  A total of 2961 participants were included in this study: 1388 (mean [SD] age, 71 [10] years; 702 female [51%]) from the BioFINDER-2 study, 752 (mean [SD] age, 72 [6] years; 406 female [54%]) from the BioFINDER-1 study, and 821 (mean [SD] age, 75 [8] years; 449 male [55%]) from ADNI. In the BioFINDER-2 study, VBM analyses in the whole cohort revealed a specific association between SAA α-syn+ and the cholinergic NBM, even when adjusting for Alzheimer copathology. ROI-based analyses in the BioFINDER-2 study focused on regions involved in the cholinergic system and confirmed that SAA α-syn+ was indeed independently associated with smaller NBM (β = −0.271; 95% CI, −0.399 to −0.142; P <.001) and CH1/2/3 volumes (β = −0.227; 95% CI, −0.377 to −0.076; P =.02). SAA α-syn+ was also independently associated with smaller NBM volumes in the separate CU (β = −0.360; 95% CI, −0.603 to −0.117; P =.03) and CI (β = −0.251; 95% CI, −0.408 to −0.095; P =.02) groups. Overall, the association between SAA α-syn+ and NBM volume was replicated in the BioFINDER-1 study and ADNI cohort. In CI individuals, NBM volumes partially mediated the association of SAA α-syn+ with attention/executive impairments in all cohorts (BioFINDER-2, β = −0.017; proportion-mediated effect, 7%; P =.04; BioFINDER-1, β = −0.096; proportion-mediated effect, 19%; P =.04; ADNI, β = −0.061; proportion-mediated effect, 20%; P =.007).
+            Conclusions and Relevance  In this cohort study, SAA α-syn+ was consistently associated with NBM atrophy already during asymptomatic stages. Further, in memory clinic CI populations, SAA α-syn+ was associated with NBM atrophy, which partially mediated α-syn–induced attention/executive impairment.]]></abstract>
+            <!--초록에 각괄호 등 XML 예약문자가 들어가 있어 GPT의 도움을 받아 <![CDATA[]]>를 이용했습니다-->
+    </text_information>
+    <object_link_information>
+        <link link_type="cites" identifier_type="doi">10.1016/S0197-4580(02)00065-9</link>
+        <link link_type="cites" identifier_type="doi">10.1016/S1474-4422(23)00405-2</link>
+        <link link_type="cites" identifier_type="doi">10.1016/S1474-4422(19)30153-X</link>
+        <link link_type="cites" identifier_type="doi">10.1212/01.wnl.0000187889.17253.b1</link>
+        <link link_type="cites" identifier_type="doi">10.1007/s00401-020-02255-2</link>
+        <link link_type="citedBy" identifier_type="pmid">41339536</link>
+        <link link_type="citedBy" identifier_type="pmid">40057942</link>
+        <link link_type="citedBy" identifier_type="pmid">39865328</link>
+        <link link_type="citedBy" identifier_type="pmid">39935389</link>
+        <link link_type="citedBy" identifier_type="pmid">40678251</link>
+    </object_link_information>
+    <rights_information>
+        <access_model>free_to_read</access_model>
+        <publishing_model>traditional</publishing_model>
+    </rights_information>
+    <administrative_metadata>
+        <repo_register_id>MMLR2024-80763511</repo_register_id>
+        <record_status>revised</record_status>
+        <created_date>2024-06-15T23:00:00</created_date>
+        <last_modified_date>2024-07-28T21:00:33</last_modified_date>
+    </administrative_metadata>
+</metadata_for_medical_library_repository>

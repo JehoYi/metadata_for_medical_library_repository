@@ -1,0 +1,145 @@
+<metadata_for_medical_library_repository
+    xmlns="https://mmlr.org/metadataformedicallibraryrepository/schema/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://mmlr.org/metadataformedicallibraryrepository/schema/1.0 MMLR_Schema.xsd">
+    <object_type object_category="article" article_type="review_article"/>
+    <object_type object_category="article" article_type="original_article"/>
+    <!--기관 정책에 따라 Cochrane Review 논문은 Original Article로도 인정하여 2개 타입을 기재합니다-->
+    <object_title>
+        <original_title>Pharmacotherapy for mild hypertension</original_title>
+        <translated_title language="Español">Farmacoterapia para la hipertensión leve</translated_title>
+        <translated_title language="فارسی">دارودرمانی در مدیریت بالینی هیپرتانسیون خفیف</translated_title>
+        <translated_title language="Français">Pharmacothérapie pour l'hypertension légère</translated_title>
+        <translated_title language="Português">Tratamento medicamentoso para hipertensão leve</translated_title>
+    </object_title>
+    <author_information>
+        <author_type>1st_author</author_type>
+        <author_name>
+            <full_name>Dominic Wang</full_name>
+        </author_name>
+        <author_address>Department of Medicine, University of British Columbia, Vancouver, Canada</author_address>
+        <author_position>1</author_position>
+    </author_information>
+    <author_information>
+        <author_type>co_author</author_type>
+        <author_name>
+            <full_name>James M Wright</full_name>
+        </author_name>
+        <author_address>Department of Anesthesiology, Pharmacology and Therapeutics, University of British Columbia, Vancouver, Canada</author_address>
+        <author_position>2</author_position>
+    </author_information>
+    <author_information>
+        <author_type>co_author</author_type>
+        <author_name>
+            <full_name>Stephen P Adams</full_name>
+        </author_name>
+        <author_address>Department of Anesthesiology, Pharmacology and Therapeutics, University of British Columbia, Vancouver, Canada</author_address>
+        <author_position>3</author_position>
+    </author_information>
+    <author_information>
+        <author_type>co_author</author_type>
+        <author_name>
+            <full_name>David K Cundiff</full_name>
+        </author_name>
+        <author_address>Formerly Internal Medicine at Los Angeles County + University of Southern California Medical Center, Independent researcher, San Anselmo, USA</author_address>
+        <author_position>4</author_position>
+    </author_information>
+    <author_information>
+        <author_type>co_author</author_type>
+        <author_name>
+            <full_name>Francois Gueyffier</full_name>
+        </author_name>
+        <author_address>Université Claude Bernard Lyon 1, CNRS, LBBE (Laboratoire de Biométrie et Biologie Évolutive), UMR 5558, Villeurbanne, F-69100, Lyon, France</author_address>
+        <author_position>5</author_position>
+    </author_information>
+    <author_information>
+        <author_type>co_author</author_type>
+        <author_name>
+            <full_name>Guillaume Grenet</full_name>
+        </author_name>
+        <author_address>Université Claude Bernard Lyon 1, CNRS, LBBE (Laboratoire de Biométrie et Biologie Évolutive), UMR 5558, Villeurbanne, F-69100, Lyon, France</author_address>
+        <author_address>Department of Anesthesiology, Pharmacology and Therapeutics, University of British Columbia, Vancouver, Canada</author_address>
+        <author_position>6</author_position>
+    </author_information>
+    <author_information>
+        <author_type>corresponding_author</author_type>
+        <author_name>
+            <full_name>Anshula Ambasta</full_name>
+        </author_name>
+        <author_identifier type="orcid">0000-0003-0211-8654</author_identifier>
+        <author_address>Department of Anesthesiology, Pharmacology and Therapeutics, University of British Columbia, Vancouver, Canada</author_address>
+        <author_email>anshula.ambasta@ubc.ca</author_email>
+        <author_position>7</author_position>
+    </author_information>
+    <object_external_identifier type="doi">10.1002/14651858.CD006742.pub4</object_external_identifier>
+    <object_external_identifier type="PMID">41925078</object_external_identifier>
+    <object_source>
+        <database>
+            <database_identifier>1469-493X</database_identifier>
+            <database_title>Cochrane Database of Systematic Reviews</database_title>
+        </database>
+    </object_source>
+    <citation_information>
+        <citation_source source="altmetric" identifier_type="url" identifier="https://cochrane.altmetric.com/details/194628783" last_checked="2026-06-12"/>
+    </citation_information>
+    <object_status>
+        <publication_stage>online_published</publication_stage>
+        <repository_status>approved</repository_status>
+    </object_status>
+    <text_information>
+        <abstract>Rationale: This is an update of a Cochrane review published in 2012 of initiation of antihypertensive monotherapy or step-up therapy in people with untreated mild hypertension (systolic blood pressure 140 to 159 mmHg or diastolic blood pressure 90 to 99 mmHg, or both) and no pre-existing cardiovascular disease. The original review demonstrated no difference in the incidence of all-cause mortality, total cardiovascular events (stroke, myocardial infarction, and congestive heart failure), stroke incidence, coronary heart disease, or withdrawal due to adverse effects (WDAEs). Evidence for antihypertensive pharmacotherapy in people with mild hypertension for primary prevention remains uncertain in the literature with conflicting studies. We therefore performed an update of the original Cochrane review to reassess whether initiation of antihypertensive pharmacotherapy compared to placebo or no treatment in people with untreated mild hypertension and no pre-existing cardiovascular disease reduces the risk of all-cause mortality, total cardiovascular events, stroke, coronary heart disease, or WDAEs.
+            Objectives: To reassess the efficacy and risks of initiating antihypertensive pharmacotherapy in adults with untreated mild hypertension and no pre-existing cardiovascular disease. The primary objective was to reassess the risk of all-cause mortality and total cardiovascular events (defined as fatal and non-fatal strokes, myocardial infarction, and congestive heart failure). The secondary objectives were to reassess the risk of stroke (fatal and non-fatal), coronary heart disease (fatal and non-fatal myocardial infarction and sudden cardiac death), and WDAEs.
+            Search methods: We searched the Cochrane Hypertension Specialised Register, CENTRAL, MEDLINE, Embase, ClinicalTrials.gov, and the World Health Organization International Clinical Trials Registry Platform from inception to June 2024.
+            Eligibility criteria: We included randomized controlled trials (RCTs) of at least one-year duration comparing initiation on antihypertensive monotherapy or step-up therapy, or both, versus placebo or no treatment in participants with mild hypertension and no pre-existing cardiovascular disease.
+            Outcomes: Our critical outcomes were all-cause mortality and total cardiovascular events. Important outcomes were stroke, coronary heart disease (fatal and non-fatal myocardial infarction and sudden cardiac death), and WDAEs.
+            Risk of bias: Two review authors assessed risk of bias independently and in duplicate using Cochrane's RoB 1 tool.
+            Synthesis methods: Two review authors performed title and abstract screening, full-text review, and data extraction independently and in duplicate. We calculated risk ratio (RR) along with 95% confidence interval (CI) for all-cause mortality, total cardiovascular events, stroke events, coronary heart disease events, and WDAEs with the Mantel-Haenszel test and a fixed-effect model. We assessed the certainty of the evidence using the GRADE approach.
+            Included studies: We included individual patient data from five trials involving a total of 9124 participants, of whom 4593 received antihypertensives and 4531 received placebo or no treatment. All five trials reported all-cause mortality; four trials reported total cardiovascular events and strokes; three trials reported coronary heart disease; and one trial reported WDAEs.
+            Synthesis of results: There may be little to no reduction in all-cause mortality (RR 0.85, 95% CI 0.64 to 1.14; 5 trials, 9124 participants; low-certainty evidence), total cardiovascular events (RR 0.93, 95% CI 0.69 to 1.24; 4 trials, 7292 participants; low-certainty evidence), or coronary heart disease (RR 1.12, 95% CI 0.80 to 1.57; 3 trials, 7080 participants; low-certainty evidence). There may be a decreased risk of stroke (RR 0.41, 95% CI 0.20 to 0.84; 4 trials, 7292 participants; low-certainty evidence) and an increase in WDAEs (RR 4.80, 95% CI 4.14 to 5.57; 1 trial, 17,354 participants [aggregate trial-level data; individual patient data unavailable]; low-certainty evidence) with antihypertensives. We downgraded the certainty of evidence for all outcomes due to imprecision, indirectness, and risk of bias.
+            Authors' conclusions: In people with untreated mild hypertension and no pre-existing cardiovascular disease, initiation of antihypertensive monotherapy or step-up therapy may not reduce all-cause mortality, total cardiovascular events, or coronary heart disease compared to those who received placebo or no treatment. There may be a reduction in stroke, but possibly also an increase in WDAEs.
+            Funding: CIHR Grant to the Hypertension Review Group and British Columbia Ministry of Health Grant to the Therapeutics Initiative.
+            Registration: Protocol (2007): doi.org/10.1002/14651858.CD006742. Original review (2012): doi.org/10.1002/14651858.CD006742.pub2.</abstract>
+        <MeSH_headings>Adult</MeSH_headings>
+        <MeSH_headings>Antihypertensive Agents* / adverse effects</MeSH_headings>
+        <MeSH_headings>Antihypertensive Agents* / therapeutic use</MeSH_headings>
+        <MeSH_headings>Cardiovascular Diseases / mortality</MeSH_headings>
+        <MeSH_headings>Cardiovascular Diseases / prevention and control</MeSH_headings>
+        <MeSH_headings>Cause of Death</MeSH_headings>
+        <MeSH_headings>Coronary Disease / epidemiology</MeSH_headings>
+        <MeSH_headings>Coronary Disease / mortality</MeSH_headings>
+        <MeSH_headings>Coronary Disease / prevention and control</MeSH_headings>
+        <MeSH_headings>Heart Failure / epidemiology</MeSH_headings>
+        <MeSH_headings>Heart Failure / mortality</MeSH_headings>
+        <MeSH_headings>Heart Failure / prevention and control</MeSH_headings>
+        <MeSH_headings>Humans</MeSH_headings>
+        <MeSH_headings>Hypertension* / drug therapy</MeSH_headings>
+        <MeSH_headings>Hypertension* / mortality</MeSH_headings>
+        <MeSH_headings>Myocardial Infarction / epidemiology</MeSH_headings>
+        <MeSH_headings>Myocardial Infarction / mortality</MeSH_headings>
+        <MeSH_headings>Myocardial Infarction / prevention and control</MeSH_headings>
+        <MeSH_headings>Randomized Controlled Trials as Topic</MeSH_headings>
+        <MeSH_headings>Stroke / epidemiology</MeSH_headings>
+        <MeSH_headings>Stroke / mortality</MeSH_headings>
+        <MeSH_headings>Stroke / prevention and control</MeSH_headings>
+    </text_information>
+    <object_link_information>
+        <!--도서관 미구독자원으로 원문 확인이 어려워 인용정보 섹션은 비웁니다-->
+        <link link_type="hasReply" identifier_type="other">https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD006742.pub4/detailed-comment/en?messageId=488244608</link>
+        <link link_type="isVersionOf" identifier_type="doi">10.1002/14651858.CD006742</link>
+        <link link_type="isVersionOf" identifier_type="doi">10.1002/14651858.CD006742.pub2</link>
+        <link link_type="isVersionOf" identifier_type="doi">10.1002/14651858.CD006742.pub3</link>
+        <link link_type="isRelatedWith" identifier_type="doi">https://doi.org/10.1002/cca.4704</link>
+        <!--Cochrane Library의 Clinical Question 컨텐츠에 본 논문이 인용된 것을 일반 인용이 아닌 Relation으로 처리했습니다
+        일반 논문에서 인용된 것이 아니기 때문에, 일반적으로 인용정보 추적 시 빠지기 때문입니다-->
+    </object_link_information>
+    <rights_information>
+        <rights_status>copyrighted</rights_status>
+        <access_model>subscription</access_model>
+        <publishing_model>traditional</publishing_model>
+    </rights_information>
+    <administrative_metadata>
+        <repo_register_id>MMLR2026-28739167</repo_register_id>
+        <record_status>created</record_status>
+        <created_date>2026-04-28T00:30:00</created_date>
+    </administrative_metadata>
+</metadata_for_medical_library_repository>

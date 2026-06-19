@@ -1,0 +1,678 @@
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="https://mmlr.org/metadataformedicallibraryrepository/schema/1.0"
+    targetNamespace="https://mmlr.org/metadataformedicallibraryrepository/schema/1.0"
+    elementFormDefault="qualified">
+    <xs:element name="metadata_for_medical_library_repository">
+        <!--의학도서관 리포지터리에서 논문과 데이터셋을 저장하고, 조직화된 데이터를 통해 검색을 용이하게 만드는 메타데이터 스키마-->
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="object_type" minOccurs="1" maxOccurs="unbounded">
+                    <!--object_type이 article 외에도 dataset, iamge, protocol, 기타 문서 등을 수용할 수 있도록 gpt의 도움을 받아 리팩토링하였습니다-->
+                    <xs:complexType>
+                        <xs:attribute name="object_category" use="required">
+                            <!--object_category라는 속성을 object_type 요소에서 반드시 기재하도록 합니다.-->
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="article"/>
+                                    <!--일반 논문 계통인 경우 article로 입력합니다-->
+                                    <xs:enumeration value="dataset"/>
+                                    <!--데이터 모음집(데이터셋) 인 경우 dataset으로 입력합니다
+                                    이미지, 사운드, 비디오 등의 모음집도 데이터셋으로 처리합니다-->
+                                    <xs:enumeration value="image"/>
+                                    <!--데이터셋에 포함되지 않는 개별 이미지인 경우 image로 처리합니다-->
+                                    <xs:enumeration value="sound"/>
+                                    <!--데이터셋에 포함되지 않는 개별 소리 자료인 경우 sound로 처리합니다-->
+                                    <xs:enumeration value="video"/>
+                                    <!--데이터셋에 포함되지 않는 영상자료인 경우 video로 처리합니다-->
+                                    <xs:enumeration value="software"/>
+                                    <!--연구자가 개발한 소프트웨어, 혹은 링크 등에 필요한 상용 소프트웨어를 입력할 때 사용합니다
+                                    소스 코드도 소프트웨어로 처리합니다-->
+                                    <xs:enumeration value="protocol"/>
+                                    <!--정식 논문으로 발표되지 않는 실험 프로토콜 등을 여기에 입력합니다-->
+                                    <xs:enumeration value="other"/>
+                                    <!--기타 문서 자료 등을 처리하기 위해 사용합니다. 특정한 문서자료가 늘어날 경우 
+                                    해당 문서의 범주를 새로 등록하는 것도 고려해 볼 수 있습니다-->
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="article_type" use="optional">
+                            <!--첫번째 속성에서 ARTICLE을 선택한 뒤 옵션으로 article_type의 상세 내역을 기재하도록 처리합니다-->
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="original_article"/>
+                                    <!--일반적으로 원저로 인식되는 원고를 origianl_article로 입력합니다-->
+                                    <!--기관 지침에 따라 다른 article_type과 병행하여 입력할 수 있습니다.-->
+                                    <xs:enumeration value="review_article"/>
+                                    <!--일반적으로 종설으로 인식되는 원고를 review_article로 입력합니다. 
+                                    기관의 정책에 따라 original article과 병행해서 사용할 수 있습니다-->
+                                    <xs:enumeration value="case_report"/>
+                                    <!--일반적으로 증례보고으로 인식되는 원고를 case_report로 입력합니다. 
+                                    기관의 정책에 따라 original article과 병행해서 사용할 수 있습니다-->
+                                    <xs:enumeration value="randomized_controlled_trial"/>
+                                    <!--일반적으로 무작위대조임상시험(RCT)으로 인식되는 원고를 randomized_controlled_trial로 입력합니다. 
+                                    기관의 정책에 따라 original article과 병행해서 사용할 수 있습니다-->
+                                    <xs:enumeration value="editorial"/>
+                                    <!--일반적으로 학술지 편집자 주 등으로 인식되는 원고를 editorial로 입력합니다. -->
+                                    <xs:enumeration value="correction"/>
+                                    <!--기존 출판된 논문의 수정사항으로 인식되는 원고를 correction으로 입력합니다. -->
+                                    <xs:enumeration value="letter"/>
+                                    <!--학술지 등에서 편집자 또는 타 논문 저자에게 투고된 편지 형식으로 인식되는 원고를 letter로 입력합니다. -->
+                                    <xs:enumeration value="conference_paper"/>
+                                    <!--컨퍼런스에서 발표된 논문 형식의 원고를 conference_paper로 입력합니다.-->
+                                    <xs:enumeration value="conference_poster"/>
+                                    <!--컨퍼런스에서 발표된 포스터 형식의 원고를 conference_poster로 입력합니다.-->
+                                    <xs:enumeration value="preprint"/>
+                                    <!--정식 출판되지 않았지만 공개된 리포지터리(arXiv, medRxiv, etc) 등에 업로드된 출판 전 원고를 preprint로 입력합니다-->
+                                    <xs:enumeration value="others"/>
+                                    <!--그 외 판단하기 어려운 원고는 others로 입력합니다.-->
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="dataset_type" use="optional">
+                            <!--데이터셋인 경우 데이터셋의 분류에 대해서 입력 가능합니다.-->
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="clinical_dataset"/>
+                                    <!--임상시험 혹은 임상현장과 관련된 데이터셋입니다.-->
+                                    <xs:enumeration value="experimental_dataset"/>
+                                    <!--임상시험 외 실험과 관련된 데이터셋입니다.-->
+                                    <xs:enumeration value="survey_dataset"/>
+                                    <!--설문조사와 관련된 데이터셋입니다. 경우에 따라 임상시험 데이터셋과 함께 쓰일 수 있습니다.-->
+                                    <xs:enumeration value="imaging_dataset"/>
+                                    <!--CT/MRI 영상 등 이미지 데이터셋입니다-->
+                                    <xs:enumeration value="genomic_dataset"/>
+                                    <!--유전자 검사, 혹은 유전자 시뮬레이션 데이터 등과 관련된 데이터셋입니다-->
+                                    <xs:enumeration value="administrative_dataset"/>
+                                    <!--실험 등과 직접적으로 관련되지 않은, 업무 관리 등에 해당하는 데이터셋입니다.
+                                    학술지 출판 APC 지원 데이터 등을 할당할 수 있습니다.-->
+                                    <xs:enumeration value="statistical_dataset"/>
+                                    <!--통계와 관련된 데이터셋입니다. 경우에 따라 임상시험 데이터셋 등과 함께 쓰일 수 있습니다.-->
+                                    <xs:enumeration value="other_dataset"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="image_type" use="optional">
+                            <!--이미지 타입인 경우 그 분류 입력을 할 수 있습니다.-->
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="clinical_image"/>
+                                    <!--임상시험 혹은 임상현장과 관련된 이미지입니다-->
+                                    <xs:enumeration value="article_image"/>
+                                    <!--논문과 관련된 이미지입니다(Figure n 등)-->
+                                    <xs:enumeration value="dataset_image"/>
+                                    <!--데이터셋과 관련된 이미지입니다(데이터셋 구조도 등)-->
+                                    <xs:enumeration value="experiment_image"/>
+                                    <!--실험과 관련된 이미지입니다(실험실 사진 등)-->
+                                    <xs:enumeration value="interview_image"/>
+                                    <!--인터뷰와 관련된 이미지입니다 (참가자 사진 등)-->
+                                    <xs:enumeration value="other_image"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="sound_type" use="optional">
+                            <!--음원 타입인 경우 그 분류 입력을 할 수 있습니다. 인터뷰 타입을 별도로 분류합니다.-->
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="clinical_sound"/>
+                                    <!--임상시험 혹은 임상현장과 관련된 소리자료입니다-->
+                                    <xs:enumeration value="article_sound"/>
+                                    <!--논문출판과 관련된 소리자료입니다-->
+                                    <xs:enumeration value="dataset_sound"/>
+                                    <!--데이터셋과 관련된 소리자료입니다-->
+                                    <xs:enumeration value="experiment_sound"/>
+                                    <!--실험과 관련된 소리자료입니다-->
+                                    <xs:enumeration value="interview_sound"/>
+                                    <!--인터뷰와 관련된 소리자료입니다-->
+                                    <xs:enumeration value="other_sound"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="object_title" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="original_title" minOccurs="1" maxOccurs="1"/>
+                            <xs:element name="translated_title" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="language" type="xs:string" use="required"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="published_date" minOccurs="0" maxOccurs="1">
+                    <!--출판/공개일과 관련된 정보를 입력합니다-->
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="received_date" type="xs:date" minOccurs="0" maxOccurs="1"/>
+                            <!--주로 학술지에서 논문을 투고받은 날짜를 공개할 경우 이를 입력합니다-->
+                            <xs:element name="revised_date" type="xs:date" minOccurs="0" maxOccurs="1"/>
+                            <!--주로 학술지에서 논문을 리뷰한 뒤 이를 토대로 수정본이 접수된 날짜를 입력합니다-->
+                            <xs:element name="accepted_date" type="xs:date" minOccurs="0" maxOccurs="1"/>
+                            <!--자료의 심사가 완료되어 게재/등록이 확정된 날짜가 공개된 경우 이를 입력합니다-->
+                            <xs:element name="first_published_date" minOccurs="1" maxOccurs="1" type="xs:date"/>
+                            <!--자료가 처음으로 인터넷 등에 공개된 날짜를 입력합니다-->
+                            <xs:element name="issue_published_date" type="xs:date" minOccurs="0" maxOccurs="1"/>
+                            <!--주로 논문의 경우 공식 권호 등을 통해 출간된 날짜가 확인되면 이를 입력합니다-->
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="author_information"  minOccurs="1" maxOccurs="unbounded">
+                    <!--sequence에서 red hat xml이 minOccurs="0"을 인식하지 못하는 문제가 있어, 
+                    GPT를 이용해 버그 수정을 실시한 뒤 구조를 수정하였습니다-->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="author_type" minOccurs="1" maxOccurs="unbounded">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="1st_author"/>
+                                        <!--저자가 제1저자로 확인되는 경우 입력합니다. 공동 제1저자도 포함됩니다.-->
+                                        <xs:enumeration value="co_author"/>
+                                        <!--저자가 특별한 표기가 없는 공동저자인 경우 입력합니다.-->
+                                        <xs:enumeration value="senior_author"/>
+                                        <!--논문에서 저자가 Senior Author로 지정되어 있는 경우 입력합니다-->
+                                        <xs:enumeration value="corresponding_author"/>
+                                        <!--논문에서 저자가 교신저자로 지정되어 있는 경우 입력합니다-->
+                                        <xs:enumeration value="other"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="author_name" minOccurs="1" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="full_name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                                        <!--저자의 전체 이름을 입력합니다. 논문에 표기된 상태 그대로 입력합니다.-->
+                                        <xs:element name="given_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                        <!--저자의 이름을 구분할 수 있는 경우 입력합니다. -->
+                                        <xs:element name="middle_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                        <!--저자의 가운데 이름을 구분할 수 있는 경우 입력합니다. -->
+                                        <xs:element name="family_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                        <!--저자의 성을 구분할 수 있는 경우 입력합니다. -->
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name = "author_identifier" minOccurs="0" maxOccurs="unbounded">
+                                <!--저자 식별자를 확인할 수 있는 경우 입력합니다.-->
+                                <!--단순하게 complexType>simpleContent>extension>attribute>simpleType>restriction으로 가니 오류가 발생하여 gpt를 통해 해결-->
+                                <!--xs:element 아래로 complexType을 지정하였는데, xs:element 선언 행에서 다시 한번 xs:string을 입력하여 타입 오류 발생. element 행의 xs:string 삭제-->
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string"> <!--xs:extension 체크하기-->
+                                            <xs:attribute name="type" use="required">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="orcid"/>
+                                                        <!--ORCID 식별자를 입력합니다-->
+                                                        <xs:enumeration value="researcherid"/>
+                                                        <!--Web of Science에서 사용하는 ResearcherID를 입력합니다-->
+                                                        <xs:enumeration value="scopus"/>
+                                                        <!--Scopus에서 자동으로 생성된 저자ID를 입력합니다-->
+                                                        <xs:enumeration value="other"/>
+                                                        <!--기타 식별자를 입력합니다. 가급적 [식별자명]ID의 형태로 입력합니다.
+                                                        예) [CustomID]0002_ST_4018-->
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="author_address" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                            <xs:element name="author_email" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                            <xs:element name="author_position" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                            <!--저자 위치는 정수 양수로만 존재하므로 xs:positiveInteger를 타입으로 사용-->
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="object_external_identifier" minOccurs="0" maxOccurs="unbounded">
+                    <!--이 객체가 외부 리포지터리 등에 등록되어 있고 그 리포지터리에서 고유의 식별자를 제공하는 경우 이를 입력할 수 있습니다. -->
+                    <!--identifier의 종류를 제한하고자 하였으나, 다양한 identifier를 모두 enumeration으로 처리하는 것은 과도하다고 판단되어 제한 없이 type=string으로 처리하게 하였습니다.-->
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="type" type="xs:string" use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>                
+                <xs:element name="object_source" minOccurs="0" maxOccurs="1">
+                    <!--이 개체가 게시된 매체에 대한 사항을 입력합니다. xml에 표현되지는 않았지만, identifier를 입력하면 자동으로 참조하여 나머지 값을 가져오는 식으로 자동화를 구현하는 것을 가정합니다.-->
+                    <!--이미지나 프로토콜 등이 공식 매체에 게시되지 않을 수 있어, minOccurs를 기존 1에서 0으로 변경했습니다-->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="journal" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="journal_identifier" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                        <!--학술지 identifier, 즉 issn 정보는 하나의 학술지가 issn, eissn, 혹은 linking issn 등 여러 가지를 가질 수 있고-->
+                                        <!--동시에 오래된 학술지는 identifier 자체가 없을 수 있으므로 minOccurs 를 0으로 기재합니다-->
+                                        <xs:element name="journal_title" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                        <!--학술지명은 다양하게 표현될 수 있어, 여러 번 입력 가능하도록 하였습니다.
+                                        하지만 실제 운용을 고려한다면, identifier가 여러 학술지명을 색인할 수 있도록 처리하고
+                                        xml에 입력하는 데이터는 최소화하는 방식을 쓰는 것이 효율적이라고 봅니다. 
+                                        따라서 journal_title은 최소 0회 입력하고 identifier만 잘 입력하면 UI단에서 저널 정보를 링크하고 보여줄 수 있도록 설계하는 것을 장기적인 목표로 합니다.-->
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="database" minOccurs="0" maxOccurs="unbounded">
+                                            <!--데이터베이스에 실린 경우 그 DB에 대한 정보를 입력합니다. 이상적으로는 identifier 혹은 URL 정보만 입력하면
+                                            시스템에서 이를 전거DB를 통해 참조하여 나머지 필요한 정보를 UI에 연결해 주는 설계를 적용해야 한다고 생각합니다.-->
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="database_identifier" type="xs:string"/>
+                                        <xs:element name="database_title" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="conference" minOccurs="0" maxOccurs="unbounded">
+                                <!--컨퍼런스 관련 정보를 입력합니다. 컨퍼런스의 경우 인터넷에 충분한 정보가 제공되지 않을 수 있기에, 
+                                최대한 자세하게 입력하는 것이 사후 추적 등에 유용할 것으로 생각됩니다.-->
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="conference_title" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>    
+                                        <!--컨퍼런스명은 반드시 입력하되, 번역명 등이 존재할 수 있어 여러 번 입력 가능하도록 했습니다.-->
+                                        <xs:element name="conference_identifier" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                        <!--Conference는 대부분 identifier가 없어 자유롭게 입력하되 최대 1가지만 입력하도록 처리했습니다-->
+                                        <xs:element name="conference_date" minOccurs="0" maxOccurs="1">
+                                                        <!--컨퍼런스 일정은 시작일과 종료일을 별도로 입력할 수 있도록 처리하였습니다-->
+                                           <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="start_date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+                                                    <xs:element name="end_date" type="xs:date" minOccurs="0" maxOccurs="1"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="citation_information" minOccurs="0" maxOccurs="1">
+                    <!--인용/피인용과 관련된 정보를 입력합니다.-->
+                    <!--기존 xsd에서는 citation 값을 직접 입력하는 형태였으나, 이는 실시간으로 변경되는 데이터를 반영하기 어렵고 사용성도 떨어진다고 판단했습니다.-->
+                    <!--따라서 외부 또는 리포지터리에서 citation 정보를 별도로 관리하고, 그것을 identifier나 url로 연결하는 방식을 xsd로 구현하고자 합니다.-->
+                    <!--실제 citation 값은 외부 리포지터리와의 연결을 통해 UI에서 자동 반영되도록 설계합니다.-->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="citation_source" minOccurs="0" maxOccurs="unbounded">
+                                <!--인용정보의 출처를 attribute로 입력합니다-->
+                                <!--여기서 기재된 source명은 가상의 외부 수집체계와 리포지터리를 연결하는 키값으로 사용합니다-->
+                                <xs:complexType>
+                                    <xs:attribute name="source" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="opencitations"/>
+                                                <!--opencitations 데이터셋에서 인용정보를 수집한 경우 입력합니다.-->
+                                                <xs:enumeration value="google_scholar"/>
+                                                <!--google scholar에서 인용정보를 수집한 경우 입력합니다.-->
+                                                <xs:enumeration value="pubmed"/>
+                                                <!--미의학도서관 PubMed에서 인용정보를 수집한 경우 입력합니다.-->
+                                                <xs:enumeration value="wos"/>
+                                                <!--Clarivate Web of Science에서 인용정보를 수집한 경우 입력합니다.-->
+                                                <xs:enumeration value="scopus"/>
+                                                <!--Elsevier Scopus에서 인용정보를 수집한 경우 입력합니다.-->
+                                                <xs:enumeration value="altmetric"/>
+                                                <!--Altmetric에서 인용정보를 수집한 경우 입력합니다.-->
+                                                <xs:enumeration value="demensions"/>
+                                                <!--Demensions에서 인용정보를 수집한 경우 입력합니다.-->
+                                                <xs:enumeration value="crossref"/>
+                                                <!--CrossRef에서 인용정보를 수집한 경우 입력합니다.-->
+                                                <xs:enumeration value="internal"/>
+                                                <!--리포지터리 내에서의 인용정보를 입력할 때 사용합니다. 
+                                                시스템이 구축되어 있다면 자동으로 인용-피인용 링크 정보를 이용해 갱신합니다.-->
+                                                <xs:enumeration value="other"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="identifier_type" use="required">
+                                        <!--인용정보 출처에서 사용하는 이 object의 identifier의 종류를 기재합니다-->
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="doi"/>
+                                                <!--DOI 식별자를 입력합니다. -->
+                                                <xs:enumeration value="pmid"/>
+                                                <!--PubMed에서 사용하는 PMID 식별자를 입력합니다.-->
+                                                <xs:enumeration value="pmcid"/>
+                                                <!--PubMed Central 에 등록된 논문의 경우 PMCID를 입력합니다-->
+                                                <xs:enumeration value="wos_ut"/>
+                                                <!--Web of Science에 색인된 논문의 경우 그 고유식별자인 UT를 입력합니다.-->
+                                                <xs:enumeration value="scopus_eid"/>
+                                                <!--Scopus에 색인된 논문의 경우 그 고유식별자인 EID를 입력합니다-->
+                                                <xs:enumeration value="internal_id"/>
+                                                <!--리포지터리 내에서의 인용정보를 입력할 때 사용합니다. repo_register_id를 입력할 때 이 속성을 사용합니다.-->
+                                                <xs:enumeration value="url"/>
+                                                <!--URL을 식별자로 사용할 때 입력합니다.-->
+                                                <xs:enumeration value="other"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="identifier" type="xs:string" use="required"/>
+                                    <!--실제 identifier 값을 입력합니다. -->
+                                    <xs:attribute name="last_checked" type="xs:date" use="optional"/>
+                                    <!--마지막 업데이트 날짜를 입력합니다. 이 값은 시스템에서 자동으로 처리하는 것으로 가정합니다.-->
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name = "object_status" minOccurs="1" maxOccurs="1">
+                    <!--기존 출판상태와 레코드상태를 간략히 서술한 것을, 방향성을 범용 데이터 리포지터리로 잡은 뒤
+                    gpt를 활용하여 확장하였습니다
+                    기존에는 object_status의 attribute로만 기술하였는데, 새로이 하위 element + attribute 형식으로 입력하도록 수정했습니다-->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="publication_stage" minOccurs="1" maxOccurs="1">
+                                <!--출판 또는 공개 단계에 대한 정보를 기술합니다-->
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="not_submitted"/>
+                                        <!--제출 전 자료를 의미합니다-->
+                                        <xs:enumeration value="submitted"/>
+                                        <!--학술지, DB, 컨퍼런스 등에 제출하고 현재 평가가 진행중인 상태입니다-->
+                                        <xs:enumeration value="accepted_not_opened"/>
+                                        <!--내부적으로 출판 등이 승인되었으나 외부에 공개되지 않은 상태입니다-->
+                                        <xs:enumeration value="just_accepted"/>
+                                        <!--승인되어 공개되었으나 포맷 등이 적용되지 않은 상태입니다-->
+                                        <xs:enumeration value="online_published"/>
+                                        <!--정식 권호 출판은 되지 않고, 온라인 형태로 포맷이 적용된 상태입니다-->
+                                        <xs:enumeration value="issue_published"/>
+                                        <!--정식 권호로 출판된 상태입니다. 온라인 학술지의 경우 issue가 없을 수 있습니다-->
+                                        <xs:enumeration value="conference_published"/>
+                                        <!--컨퍼런스에서 발표된 경우 사용합니다-->
+                                        <xs:enumeration value="preprint_posted"/>
+                                        <!--arXiv와 같은 프리프린트 서버에 게시된 경우입니다-->
+                                        <xs:enumeration value="unpublished"/>
+                                        <!--출판되지 않은 자료입니다-->
+                                        <xs:enumeration value="not_applicable"/>
+                                        <!--출판 단계에 대해 기술하기 어려운 자료를 의미합니다-->
+                                        <xs:enumeration value="unknown"/>
+                                        <!--고아 저작물 등을 수집했을 때 그 자료의 상태를 알기 어려운 경우 등에 사용합니다-->
+                                        <xs:enumeration value="other"/>
+                                        <!---->
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="post_publication_status" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="status" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="corrected"/>
+                                                <!--출판 후 오류 등이 수정된 상태입니다. erratum, corrigendum 등을 포함합니다-->
+                                                <xs:enumeration value="expression_of_concern"/>
+                                                <!--출판 후 그 내용에 대해 이의가 제기된 상태입니다-->
+                                                <xs:enumeration value="withdrawn_by_author"/>
+                                                <!--출판 후 저자가 직접 철회한 상태입니다-->
+                                                <xs:enumeration value="retracted"/>
+                                                <!--출판 후 학술지나 출판사 등 저자 외의 주체에 의해 논문 등이 철회 또는 게시에서 내려간 상태입니다-->
+                                                <xs:enumeration value="unknown"/>
+                                                <xs:enumeration value="other"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="status_date" type="xs:date" use="optional"/>
+                                    <xs:attribute name="source" type="xs:string" use="optional"/>
+                                    <!--post_publication_status를 확인한 출처 즉 학술지, pubpeer 등을 기재합니다-->
+                                    <xs:attribute name="source_uri" type="xs:string" use="optional"/>
+                                    <!--출처의 URI를 기재합니다-->
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="repository_status" minOccurs="0" maxOccurs="1">
+                                <!--이 객체가 리포지터리에 제출되고 나서 어떤 상태인지를 기재합니다-->
+                                <!--관리 메타데이터에 들어가도 무방하나, 관리 메타데이터는 레코드 자체의 관리에 집중하고자
+                                객체와 리포지터리 간의 관계에 해당하는 이 요소는 object status에 기술합니다-->
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="submitted"/>
+                                        <!--사용자가 리포지터리에 객체를 등록한 이후 바로 메타데이터 작성을 할 것인지, 
+                                        아니면 리뷰를 거쳐 리포지터리 게시가 완료된 시점에서 메타데이터 작성을 할 것인지,
+                                        등록 시점에서 메타데이터를 작성하되 리뷰 탈락 시 이를 삭제할 것인지,
+                                        삭제한다면 그 삭제 정보를 남겨 둘 것인지는
+                                        운영기관의 정책에 따라 바뀌어야 할 것입니다-->
+                                        <xs:enumeration value="under_review"/>
+                                        <xs:enumeration value="approved"/>
+                                        <xs:enumeration value="published"/>
+                                        <xs:enumeration value="rejected"/>
+                                        <!--제출 후 리뷰 단계에서 탈락했을 때 기재합니다-->
+                                        <xs:enumeration value="withdrawn_by_author"/>
+                                        <!--리포지터리 제출자가 직접 등록 해제 요청 시 사용합니다-->
+                                        <xs:enumeration value="archived_not_published"/>
+                                        <!--리포지터리 제출자가 공개를 거부했을 때 기재합니다-->
+                                        <xs:enumeration value="deleted"/>
+                                        <!--보관기관 만료 등으로 인해 삭제된 경우 기재합니다-->
+                                        <xs:enumeration value="unknown"/>
+                                        <xs:enumeration value="other"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="status_note" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                            <!--기타 객체 상태와 관련된 주기사항을 필요에 따라 수기 입력합니다.-->
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="text_information" minOccurs="0" maxOccurs="1">
+                    <!--레코드가 표현하는 객체와 관련된 각종 텍스트형 정보를 입력합니다. -->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="abstract" minOccurs="0" maxOccurs="1"/>
+                            <!--초록 정보를 입력합니다-->
+                            <xs:element name="note_from_article" minOccurs="0" maxOccurs="unbounded"/>
+                            <!--아티클 자체에서 기재한 각종 노트 정보를 입력합니다-->
+                            <xs:element name="keywords" minOccurs="0" maxOccurs="unbounded"/>
+                            <!--키워드 정보를 입력합니다-->
+                            <xs:element name="MeSH_headings" minOccurs="0" maxOccurs="unbounded"/>
+                            <!--PubMed에 색인된 레코드인 경우, MeSH 정보를 입력합니다. 
+                            직접 입력하는 대신 PubMed API를 경유해 데이터를 연동해도 좋을 것 같습니다-->
+                        </xs:sequence>                
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="object_link_information" minOccurs="0" maxOccurs="1">
+                    <!--객체가 다른 객체 등과 연결되는 정보를 기술합니다
+                    예를 들어 인용/피인용 시 그 대상이 되는 객체들에 대해서 작성하고
+                    retraction이 발생했을때 공지문, expression of concern 등을 연결할 수도 있습니다-->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="link" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="link_type" use="required">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="cites"/>
+                                                        <!--본 레코드가 참조하는 객체가 인용한 다른 객체들을 서술합니다-->
+                                                        <xs:enumeration value="citedBy"/>
+                                                        <!--본 레코드가 참조하는 객체를 인용하는 다른 객체들을 서술합니다-->
+                                                        <xs:enumeration value="hasRetraction"/>
+                                                        <!--retraction이 발생했을 경우 그 공지문을 연결합니다-->
+                                                        <xs:enumeration value="isRetractionOf"/>
+                                                        <!--객체 자체가 다른 객체에 대한 철회문일 경우 그 대상 객체를 연결합니다-->
+                                                        <xs:enumeration value="hasExpressionOfConcern"/>
+                                                        <!--객체에 대한 우려 표명(expression of concern)이 발행되었을 때 그 대상 객체를 연결합니다-->
+                                                        <xs:enumeration value="isExpressionOfConcernOf"/>
+                                                        <!--객체 자체가 다른 객체에 대한 우려 표명인 경우 그 객체를 연결합니다-->
+                                                        <xs:enumeration value="hasErratum"/>
+                                                        <!--객체에 대한 수정사항(erratum, correction 등)이 발행되었을 때 그 대상 객체를 연결합니다-->
+                                                        <xs:enumeration value="isErratumOf"/>
+                                                        <!--객체 자체가 다른 객체에 대한 수정사항인 경우 그 객체를 연결합니다-->
+                                                        <xs:enumeration value="hasReply"/>
+                                                        <!--객체에 대한 응답 letter (reply/comment) 가 발행된 경우 그 객체를 연결합니다-->
+                                                        <xs:enumeration value="isReplyOf"/>
+                                                        <!--객체 자체가 다른 객체에 대한 응답 letter (reply/comment) 인 경우 그 대상 객체를 연결합니다-->
+                                                        <xs:enumeration value="isVersionOf"/>
+                                                        <!--본 레코드가 참조하는 객체의 최초 버전이 있는 경우, 그 최초 버전의 객체를 연결합니다-->
+                                                        <xs:enumeration value="hasNewerVersion"/>
+                                                        <!--본 레코드가 참조하는 객체의 새로운 버전이 있는 경우, 그 새로운 버전의 객체를 연결합니다-->
+                                                        <xs:enumeration value="isRelatedWith"/>
+                                                        <!--위에 정의된 방식 외 본 레코드와 연관된 객체를 연결합니다-->
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="identifier_type" use="required">
+                                                <!--본 레코드와 연결된 객체를 지시하는 식별자를 입력합니다. 식별자 대표값들이 enumeration으로 들어가며 기타 식별자는 other로 표현합니다
+                                                온전한 링크를 위해 식별자는 어떤 형태로든지 반드시 들어가야 합니다.
+                                                단, 식별자가 없는 자료인 경우 other를 선택한 뒤 unavailable 등으로 입력할 수 있습니다.-->
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="doi"/>
+                                                        <xs:enumeration value="pmid"/>
+                                                        <xs:enumeration value="repository_id"/>
+                                                        <xs:enumeration value="other"/>
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>                
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="rights_information" minOccurs="0" maxOccurs="1">
+                    <!--저작권 관련 정보를 입력합니다. 기존 저널 퍼블리싱 모델에 집중한 것에서 조금 더 나아가, 범용적인 형태로 저작권을 다룰 수 있도록 GPT를 활용해 리팩토링했습니다
+                    publishing model과 access model이 혼재되어 있었어서 이를 분리하였습니다-->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="rights_status" minOccurs="0" maxOccurs="1">
+                                <!--저작권 현재 상태에 대한 서술입니다. 사용자가 직접 입력하지 않고 
+                                저작권 종류에 따라 자동으로 반영되는 방식으로 설계하는 것이 효율적이라고 생각합니다.-->
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="copyrighted"/>
+                                        <!--저작권 보호가 유효한 자료인 경우 이 값을 이용합니다-->
+                                        <xs:enumeration value="public_domain"/>
+                                        <!--현재 저작권이 만료되어 퍼블릭 도메인 상태인 경우 이 값을 이용합니다.-->
+                                        <xs:enumeration value="unknown"/>
+                                        <!--저작권이 만료되었는지, 혹은 누군가에게 귀속되어 있는지 알 수 없는 경우 이 값을 이용합니다.-->
+                                        <xs:enumeration value="not_applicable"/>
+                                        <!--저작권 관련 정보를 지정할 수 없는 객체의 경우 이 값을 이용합니다.-->
+                                        <xs:enumeration value="other"/>
+                                        <!--기타 특수한 상태인 경우 이 값을 이용합니다.-->
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="access_model" minOccurs="0" maxOccurs="1">
+                                <!--객체의 접근 방식과 관련된 정보입니다. 비용을 지불해야 하는 경우 subscription으로 입력합니다-->
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="open_access"/>
+                                        <!--어떠한 형태로든 OpenAccess로 접근 가능하면 사용합니다-->
+                                        <xs:enumeration value="free_to_read"/>
+                                        <!--OpenAccess가 아니지만 출판사 등 저작권자에 의해 임의로 개방된 자료의 경우 사용합니다.-->
+                                        <xs:enumeration value="restricted"/>
+                                        <!--접근이 제한된 경우 입력합니다. Paywall을 통해 제한된 경우 아래의 subscription을 사용합니다-->
+                                        <xs:enumeration value="embargoed"/>
+                                        <!--공개 전까지 엠바고가 걸려 있는 자료의 경우 입력합니다-->
+                                        <xs:enumeration value="subscription"/>
+                                        <!--Paywall 등으로 접근이 제한되어 비용을 지불할 경우 열람이 가능하다면 입력합니다-->
+                                        <xs:enumeration value="institution_member_only"/>
+                                        <!--학회, 기관 회원인 경우에만 열람 가능한 경우 입력합니다-->
+                                        <xs:enumeration value="unknown"/>
+                                        <!--접근권에 대한 정보가 없는 경우 입력합니다-->
+                                        <xs:enumeration value="other"/>
+                                        <!--기타 접근 권한에 대해 입력합니다-->
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="publishing_model" minOccurs="0" maxOccurs="1">
+                                <!--주로 학술지 아티클에 대해 출판 모델을 입력하는 항목입니다.-->
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="traditional"/>
+                                        <!--전통적인 학술지 출판 방식 (출판사/학술지가 저작권 소유, Paywalled) 인 경우 입력합니다-->
+                                        <xs:enumeration value="openaccess_gold"/>
+                                        <!--Gold Open Access 방식 (주로 APC) 인 경우 입력합니다-->
+                                        <xs:enumeration value="openaccess_green"/>
+                                        <!--Green Open Access 방식 (저자가 직접 논문을 리포지터리에 기탁하여 공개되는 경우) 입력합니다-->
+                                        <xs:enumeration value="openaccess_hybrid"/>
+                                        <!--OA가 아닌 학술지에서 OA 옵션을 제공하여 이를 통해 OA 형식으로 출판된 논문의 경우 입력합니다-->
+                                        <xs:enumeration value="openaccess_diamond"/>
+                                        <!--APC가 없는 Diamond OA 방식으로 출판된 경우 입력합니다-->
+                                        <xs:enumeration value="openaccess_other"/>
+                                        <!--기타 방식으로 OA 출판이 된 경우 입력합니다-->
+                                        <xs:enumeration value="not_applicable"/>
+                                        <!--출판방식을 적용할 수 없는 객체들(Editorial, Invited Review, Comment 등)에 대해 이 값을 적용합니다-->
+                                        <xs:enumeration value="unknown"/>
+                                        <!--출판방식을 알 수 없는 경우 적용합니다-->
+                                        <xs:enumeration value="other"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="license_information" minOccurs="0" maxOccurs="unbounded">
+                                <!--라이선스 관련 정보입니다. 몇가지 타입을 고르고 관련 정보를 입력합니다.-->
+                                <xs:complexType>
+                                    <xs:attribute name="licence_type" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="creative_commons"/>
+                                                <!--Creative Commons 방식으로 출판/공개된 경우 적용합니다-->
+                                                <xs:enumeration value="open_source"/>
+                                                <!--오픈소스 방식으로 공개된 경우 적용합니다-->
+                                                <xs:enumeration value="proprietary"/>
+                                                <!--저작권이 특정 저작권자에게 귀속되어 보호받고 소스가 공개되지 않은 경우 적용합니다
+                                                저작권이 출판사에게 있는 경우에도 이를 적용합니다(특수한 경우 제외)-->
+                                                <xs:enumeration value="public_domain"/>
+                                                <!--저작권이 만료되어 공공에게 개방된 경우 적용합니다-->
+                                                <xs:enumeration value="rights_statement"/>
+                                                <!--특정한 형태로 권리가 선언된 경우 적용합니다 (개인사용 가능, 재배포 또는 상업적 이용 시 저작권자 허락 등 CC외 저작권자가 임의로 지정한 경우)-->
+                                                <xs:enumeration value="unknown"/>
+                                                <!--라이선스 정보를 알 수 없는 경우 적용합니다-->
+                                                <xs:enumeration value="other"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="licence_code" type="xs:string" use="optional"/>
+                                    <!--CC-BY-4.0, MIT, Apache 등 특정 라이선스 코드가 있는 경우 입력합니다-->
+                                    <xs:attribute name="licence_uri" type="xs:string" use="optional"/>
+                                    <!--라이선스와 관련된 URI 정보가 있는 경우 입력합니다-->
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="rights_holder" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                            <!--라이선스를 보유한 사람에 대해 기재합니다.-->
+                            <xs:element name="rights_statement" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                            <!--라이선스 관련하여 객체가 별도로 표시한 내용에 대해 옮겨 적습니다.-->
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="administrative_metadata" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="repo_register_id" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                            <!--리포지터리 등록번호를 기재합니다. 리포지터리마다 단순 정수를 사용할 수도, 문자열과 숫자, 혹은 특수문자가 포함된 ID를 사용할 수 있어 string 타입으로 설정합니다.-->
+                            <xs:element name="record_status" minOccurs="1" maxOccurs="1">
+                                <!--메타데이터 레코드 자체에 대한 관리 메타데이터 영역입니다-->
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="created"/>
+                                        <xs:enumeration value="revised"/>
+                                        <xs:enumeration value="deprecated"/>
+                                        <!--만료되어 삭제될 예정인 레코드일 때 시스템이 자동으로 값을 전환합니다-->
+                                        <xs:enumeration value="superseded_by_other_record"/>
+                                        <!--다른 레코드로 이 레코드가 대체/갱신되었을 때 기술합니다-->
+                                        <xs:enumeration value="deleted"/>
+                                        <xs:enumeration value="unknown"/>
+                                        <xs:enumeration value="other"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="created_date" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+                            <!--레코드 생성 시각을 기술하는 요소입니다-->
+                            <xs:element name="last_modified_date" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                            <!--레코드가 최종적으로 수정된 시점을 기술합니다. 각 수정 버전은 별도의 DB에서 관리합니다-->
+                            <xs:element name="note_by_repository" minOccurs="0" maxOccurs="unbounded"/>
+                            <!--리포지터리에서 레코드 보완 등을 위해 입력합니다-->
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element> 
+    
+</xs:schema>

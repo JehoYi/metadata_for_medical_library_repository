@@ -1,0 +1,122 @@
+<metadata_for_medical_library_repository
+    xmlns="https://mmlr.org/metadataformedicallibraryrepository/schema/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://mmlr.org/metadataformedicallibraryrepository/schema/1.0 MMLR_Schema.xsd">
+    <object_type object_category="article" />
+    <object_title>
+        <original_title>Effect of early treatment with metformin on risk of emergency care and hospitalization among patients with COVID-19: The TOGETHER randomized platform clinical trial</original_title>
+    </object_title>
+    <published_date>
+        <first_published_date>2021-12-14</first_published_date>
+    </published_date>
+    <author_information>
+        <author_type>1st_author</author_type>
+        <author_type>corresponding_author</author_type>
+        <author_name>
+            <full_name>Reis, Gilmar</full_name>
+            <given_name>Gilmar</given_name>
+            <family_name>Reis</family_name>
+        </author_name>
+        <author_address>Research Division, Cardresearch Cardiologia Assistencial e de Pesquisa, Pontifícia Universidade Católica de Minas Gerais, Rua Domingos Vieira 300, Sala 606 Santa Efigenia, Belo Horizonte, Minas Gerais, Brazil.</author_address>
+        <author_address>Department of Medicine, Pontifícia Universidade Católica de Minas Gerais, Brazil.</author_address>
+        <author_email>greis@pucminas.br</author_email>
+        <author_position>1</author_position>
+    </author_information>
+    <author_information>
+        <author_type>co_author</author_type>
+        <author_name>
+            <full_name>Dos Santos Moreira Silva, Eduardo Augusto</full_name>
+        </author_name>
+        <author_address>Department of Medicine, Pontifícia Universidade Católica de Minas Gerais, Brazil.</author_address>
+        <author_position>2</author_position>
+    </author_information>
+    <author_information>
+        <author_type>co_author</author_type>
+        <author_name>
+            <full_name>Medeiros Silva, Daniela Carla</full_name>
+            <given_name>Daniela</given_name>
+            <middle_name>Carla</middle_name>
+            <family_name>Medeiros Silva</family_name>
+        </author_name>
+        <author_address>Department of Medicine, Pontifícia Universidade Catolica de Minas Gerais, Brazil</author_address>
+        <author_position>3</author_position>
+    </author_information>
+    <author_information>
+        <author_type>co_author</author_type>
+        <author_name>
+            <full_name>Thabane, Lehana</full_name>
+            <given_name>Lehana</given_name>
+            <family_name>Thabane</family_name>
+        </author_name>
+        <author_address>Department of Health Research Methods, Evidence, and Impact, McMaster University, Hamilton, Ontario, Canada.</author_address>
+        <author_position>4</author_position>
+    </author_information>
+    <!--전체 저자를 전부 기술하기 어려워 마지막 저자로 이동합니다.-->
+    <author_information>
+        <author_type>corresponding_author</author_type>
+        <author_name>
+            <full_name>Mills, Edward J</full_name>
+            <given_name>Edward J</given_name>
+                <!--J가 미들네임일텐데 이니셜 처리되어 정확한 파악이 불가능해 given name에 Edward J 만 입력합니다-->
+            <family_name>Mills</family_name>
+        </author_name>
+        <author_address>Department of Health Research Methods, Evidence, and Impact, McMaster University, Hamilton, Ontario, Canada.</author_address>
+        <author_email>millsej@mcmaster.ca</author_email>
+        <author_position>23</author_position>
+    </author_information>
+    <object_external_identifier type="doi">10.1016/j.lana.2021.100142</object_external_identifier>
+    <object_external_identifier type="PMID">34927127</object_external_identifier>
+    <object_external_identifier type="PMCID">PMC8668402</object_external_identifier>
+    <object_source>
+        <journal>
+            <journal_identifier>2667-193X</journal_identifier>
+            <journal_title>The Lancet Regional Health - Americas</journal_title>
+        </journal>
+    </object_source>
+    <object_status>
+        <publication_stage>online_published</publication_stage>
+        <post_publication_status status="retracted" />
+        <repository_status>under_review</repository_status>
+        <status_note>Retraction 된 기관 소속 연구자의 논문을 리포지터리에 등록할 것인지 내부 정책 논의 중</status_note>
+    </object_status>
+    <text_information>
+        <abstract>Background: Observational studies have postulated a therapeutic role of metformin in treating COVID-19. We conducted an adaptive platform clinical trial to determine whether metformin is an effective treatment for high-risk patients with early COVID-19 in an outpatient setting. Methods: The TOGETHER Trial is a placebo-controled, randomized, platform clinical trial conducted in Brazil. Eligible participants were symptomatic adults with a positive antigen test for SARS-CoV-2. We enroled eligible patients over the age of 50 years or with a known risk factor for disease severity. Patients were randomly assigned to receive either placebo or metformin (750 mg twice daily for 10 days or placebo, twice daily for 10 days). The primary outcome was hospitalization defined as either retention in a COVID-19 emergency setting for > 6 h or transfer to tertiary hospital due to COVID-19 at 28 days post randomization. Secondary outcomes included viral clearance at day 7, time to hospitalization, mortality, and adverse drug reactions. We used a Bayesian framework to determine probability of success of the intervention compared to placebo. Findings: The TOGETHER Trial was initiated June 2, 2020. We randomized patients to metformin starting January 15, 2021. On April 3, 2021, the Data and Safety Monitoring Committee recommended stopping enrollment into the metformin arm due to futility. We recruited 418 participants, 215 were randomized to the metformin arm and 203 to the placebo arm. More than half of participants (56.0%) were over the age of 50 years and 57.2% were female. Median age was 52 years. The proportion of patients with the primary outcome at 28 days was not different between the metformin and placebo group (relative risk [RR] 1.14[95% Credible Interval 0.73; 1.81]), probability of superiority 0.28. We found no significant differences between the metformin and placebo group on viral clearance through to day 7 (Odds ratio [OR], 0.99, 95% Confidence Intervals 0.88-1.11) or other secondary outcomes. Interpretation: In this randomized trial, metformin did not provide any clinical benefit to ambulatory patients with COVID-19 compared to placebo, with respect to reducing the need for retention in an emergency setting or hospitalization due to worsening COVID-19. There were also no differences between metformin and placebo observed for other secondary clinical outcomes.</abstract>
+        <keywords>Brazil; COVID-19; Hospitalization; Metformin; Outpatients; Randomized clinical trial.</keywords>
+    </text_information>
+    <object_link_information>
+        <link link_type="cites" identifier_type="doi">10.1016/j.bbadis.2017.05.027</link>
+        <link link_type="cites" identifier_type="doi">10.3748/wjg.v23.i28.5196</link>
+        <link link_type="cites" identifier_type="doi">10.1016/j.jdiacomp.2016.01.013</link>
+        <link link_type="cites" identifier_type="doi">10.3389/fimmu.2020.02056</link>
+        <link link_type="cites" identifier_type="doi">10.1016/S2666-7568(20)30033-7</link>
+        <link link_type="cites" identifier_type="doi">10.1016/j.cmet.2020.08.013</link>
+        <link link_type="cites" identifier_type="doi">10.1007/s40121-020-00349-8</link>
+        <link link_type="cites" identifier_type="doi">10.12688/gatesopenres.13304.1</link>
+        <link link_type="cites" identifier_type="doi">10.1136/bmj.m115</link>
+        <link link_type="cites" identifier_type="doi">10.7326/0003-4819-146-12-200706190-00010</link>
+        <link link_type="cites" identifier_type="doi">10.1016/j.jclinepi.2020.04.025</link>
+        <link link_type="cites" identifier_type="doi">10.1001/jamanetworkopen.2021.6468</link>
+        <link link_type="cites" identifier_type="doi">10.1016/S2589-7500(20)30086-8</link>
+        <link link_type="citedBy" identifier_type="pmid">35120771</link>
+        <link link_type="citedBy" identifier_type="pmid">37375079</link>
+        <link link_type="citedBy" identifier_type="pmid">38771027</link>
+        <link link_type="citedBy" identifier_type="pmid">37259914</link>
+        <link link_type="citedBy" identifier_type="pmid">36983573</link>
+        <link link_type="hasRetraction" identifier_type="other">https://www.sciencedirect.com/science/article/pii/S2667193X21001381</link>
+        <!--학술지의 retraction 공지문을 연결합니다-->
+        <link link_type="hasExpressionOfConcern" identifier_type="doi">10.1016/j.lana.2024.100703</link>
+        <!--본 논문에 대한 Expression of Concern 서문을 연결합니다-->
+    </object_link_information>
+    <rights_information>
+        <rights_status>other</rights_status>
+        <access_model>open_access</access_model>
+        <publishing_model>openaccess_gold</publishing_model>
+        <license_information licence_type="creative_commons" licence_code="CC-BY-NC-ND 4.0"/>
+    </rights_information>
+    <administrative_metadata>
+        <repo_register_id>MMLR2026-38714457</repo_register_id>
+        <record_status>created</record_status>
+        <created_date>2026-06-12T18:00:00</created_date>
+        <last_modified_date>2026-06-12T18:00:00</last_modified_date>
+    </administrative_metadata>
+</metadata_for_medical_library_repository>
