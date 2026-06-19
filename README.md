@@ -14,7 +14,9 @@
 ### 3. Vocabulary specification
 
 요소를 정리한 스키마 파일은 MMLR_Schema.xsd입니다.
+
 Schema.md는 각 요소의 의미와 입력 방식을 마크다운 방식으로 정리한 문서입니다.
+
 Appendix.md는 object_category, article_type, author_type, publication_stage, rights_status, record_status 등의 요소에서 사용하는 미리 정의된 attribute와 value를 별도로 정리한 문서입니다.
 
 ### 4. XSD file
